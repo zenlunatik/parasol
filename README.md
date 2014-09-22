@@ -3,17 +3,16 @@ parasol
 
 A database interface generator written in Python
 
-
-This script generates a c++ interface and implementations for DB operations.
-
-
-Create a schema in XML.
+This tool generates C++ interface and implementations for DB operations.
 
 
-Next, Feed it to parasol and optionally have it generate an iterator, create, read, update and delete interface.
+First, you need to create a schema in XML.
 
 
-The interface classes are generated along with associated factories to generate implementation objects.
+Next, Feed it to parasol and optionally have it generate an iterator, create, read, update or delete interfaces.
+
+
+The interface classes are generated along with associated factories and implementation classes.
 
 
 Here is an example:
@@ -38,8 +37,8 @@ Now run the following from the command line:
 python parasol.py --iterator sessions.xml
 
 This will generate 2 files:
-sessionIterator.cc
-sessionIterator.h
+ - sessionIterator.cc
+ - sessionIterator.h
 
 Usage:
 -----
