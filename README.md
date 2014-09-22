@@ -43,18 +43,30 @@ This will generate 2 files:
 Usage:
 -----
 python parasol.py --help
+
+
 usage: parasol.py [-h] [--create] [--read] [--update] [--delete] [--iterator]
                   schema_file
+
+
 
 positional arguments:
   schema_file  The schema file that needs to be parsed
 
+
+
 optional arguments:
+
   -h, --help   show this help message and exit
+  
   --create     Will create a record-create interface
+  
   --read       Will create a record-read interface
+  
   --update     Will create a record-update interface
+  
   --delete     Will create a record-delete interface
+  
   --iterator   Will create an iterator interface
 
 
