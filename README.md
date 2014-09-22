@@ -5,9 +5,16 @@ A database interface generator written in Python
 
 
 This script generates a c++ interface and implementations for DB operations.
+
+
 Create a schema in XML.
+
+
 Next, Feed it to parasol and optionally have it generate an iterator, create, read, update and delete interface.
+
+
 The interface classes are generated along with associated factories to generate implementation objects.
+
 
 Here is an example:
 
