@@ -12,7 +12,8 @@ The interface classes are generated along with associated factories to generate 
 Here is an example:
 
 
---sessions.xml 
+sessions.xml 
+```xml
 <?xml version="0.1"?>
 <session notifyon="create,delete">
     <username type="string"/>
@@ -23,7 +24,7 @@ Here is an example:
     <useragent type="string"/>
     <isMobileUser type="int" default="0"/>
 </session>
-
+```
 
 Now run the following from the command line:
 
@@ -44,10 +45,10 @@ positional arguments:
 
 optional arguments:
   -h, --help   show this help message and exit
-  --create     Will create a record create interface
-  --read       Will create a record read interface
-  --update     Will create a record update interface
-  --delete     Will create a record delete interface
+  --create     Will create a record-create interface
+  --read       Will create a record-read interface
+  --update     Will create a record-update interface
+  --delete     Will create a record-delete interface
   --iterator   Will create an iterator interface
 
 
