@@ -1,0 +1,10 @@
+<?xml version="0.1"?>
+<session notifyon="create,delete">
+    <username type="string"/>
+    <password type="string" secure="yes"/>
+    <userid type="int"/>
+    <lastAccessTime type="int"/>
+    <pagesVisited type="stringvector" notifyon="modify"/>
+    <useragent type="string"/>
+    <isMobileUser type="int" default="0"/>
+</session>
