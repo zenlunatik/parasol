@@ -2,6 +2,7 @@ import argparse
 import sys
 import GenIterator
 import GenCreate
+import GenUpdate
 import xml.etree.ElementTree as ET
 
 def getSchemaDict (schemafile) :
@@ -41,17 +42,21 @@ def main() :
         print "create requested"
         createG = GenCreate.GenCreate()
         createG.genHeader(schemaDict)
+        createG.genSource(schemaDict)
     if args.read :
         print "read requested"
     if args.update :
         print "update requested"
+        updateG = GenUpdate.GenUpdate()
+        updateG.genHeader(schemaDict)
+        updateG.genSource(schemaDict)
     if args.delete :
         print "delete requested"
     if args.iterator :
         print "Generating iterator"
-        #iterG = GenIterator.GenIterator(args.schema_file)
-        #iterG.genHeader()
-        #iterG.genSource()
+        iterG = GenIterator.GenIterator(args.schema_file)
+        iterG.genHeader()
+        iterG.genSource()
 
 
 
