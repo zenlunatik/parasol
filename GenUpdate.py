@@ -1,4 +1,4 @@
-class GenCreate:
+class GenUpdate:
 
     def genHeader(self, schemaDict) :
         className = schemaDict['root']
@@ -34,7 +34,7 @@ class GenCreate:
         classEnd = "     }; // class " + className.title() + "\n\n"
         factory = "     class " + className.title() + "Factory \n     {\n     public:\n          static " + className.title() + " *createNew" + className.title() + "(const char* " + className + "Id);\n     }; // class " + className.title() + "Factory\n"
         namespaceEnd = "\n} // namespace " + namespace
-        headerFO = open(className + "Create.h", "w")
+        headerFO = open(className + "Update.h", "w")
         headerFO.write(headers)
         headerFO.write(namespaceBegin)
         headerFO.write(classBegin)
@@ -51,7 +51,7 @@ class GenCreate:
         namespace = className + 's'
         namespace = namespace.title()
 
-        headers = "#include \"" + className + "Create.h\"\n#include <boost/utility.hpp>\n\n"
+        headers = "#include \"" + className + "Update.h\"\n#include <boost/utility.hpp>\n\n"
         namespaceSet = "using namespace " + namespace + ";\n\n"
         comment = "//------------------" + className.title() + "-------------\n"
         implClassName = className.title() + "Impl"
@@ -95,7 +95,7 @@ class GenCreate:
         
         constImpl = implClassName + "::" + implClassName + "(const char* " + className + "Id) : " + "\n          " + pvtVarInits[:-1] + "\n{\n     //Set up defaults here\n}\n"
         
-        srcFO = open( className + "Create.cc" , "w")
+        srcFO = open( className + "Update.cc" , "w")
         srcFO.write(headers)
         srcFO.write(namespaceSet)
         srcFO.write(comment)
