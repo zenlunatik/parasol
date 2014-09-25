@@ -4,11 +4,13 @@ class GenUpdate:
         className = schemaDict['root']
         namespace = className + 's'
         namespace = namespace.title()
+        className = className + "Update"
+        className = className[0].upper() + className[1:]
 
         headers = "#include \"helpers.h\"\n#include <string>\n#include <vector>\n\n"         
         namespaceBegin = "namespace " + namespace + "\n{\n"
-        classBegin = "     class " + className.title() + "\n     {\n"
-        classDef = "     public:\n          virtual ~" + className.title() + "() {};\n\n"
+        classBegin = "     class " + className + "\n     {\n"
+        classDef = "     public:\n          virtual ~" + className + "() {};\n\n"
         methodNames = ''
         for key,value in schemaDict['data'].items() :
             if key == schemaDict['root'] :
@@ -31,10 +33,10 @@ class GenUpdate:
             methodNames = methodNames + ") = 0;\n"
 
         commitMethod = "\n          virtual Status commitChanges() = 0;\n\n"
-        classEnd = "     }; // class " + className.title() + "\n\n"
-        factory = "     class " + className.title() + "Factory \n     {\n     public:\n          static " + className.title() + " *createNew" + className.title() + "(const char* " + className + "Id);\n     }; // class " + className.title() + "Factory\n"
+        classEnd = "     }; // class " + className + "\n\n"
+        factory = "     class " + className + "Factory \n     {\n     public:\n          static " + className + " *createNew" + className + "(const char* " + className + "Id);\n     }; // class " + className + "Factory\n"
         namespaceEnd = "\n} // namespace " + namespace
-        headerFO = open(className + "Update.h", "w")
+        headerFO = open(className + ".h", "w")
         headerFO.write(headers)
         headerFO.write(namespaceBegin)
         headerFO.write(classBegin)
@@ -50,16 +52,18 @@ class GenUpdate:
         className = schemaDict['root']
         namespace = className + 's'
         namespace = namespace.title()
+        className = className + "Update"
+        className = className[0].upper() + className[1:]
 
         headers = "#include \"" + className + "Update.h\"\n#include <boost/utility.hpp>\n\n"
         namespaceSet = "using namespace " + namespace + ";\n\n"
-        comment = "//------------------" + className.title() + "-------------\n"
-        implClassName = className.title() + "Impl"
-        implClassNameSig = "class " + implClassName + " : public " + className.title() + ",\n               private boost::noncopyable\n"
+        comment = "//------------------" + className + "-------------\n"
+        implClassName = className + "Impl"
+        implClassNameSig = "class " + implClassName + " : public " + className + ",\n               private boost::noncopyable\n"
         constructor = "{\npublic:\n     " + implClassName + "(const char* " + className + "Id);\n"
         destructor = "     ~" + implClassName + "() {}\n\n"
-        comment2 = "// ----------------BEGIN " + className.title() + " interface --------------------------------\n"
-        comment3 = "// ----------------END " + className.title() + " interface -----------------------------------\n"
+        comment2 = "// ----------------BEGIN " + className + " interface --------------------------------\n"
+        comment3 = "// ----------------END " + className + " interface -----------------------------------\n"
         
         data = schemaDict['data']
         pvtVarNames =  "private:\n"
@@ -90,12 +94,12 @@ class GenUpdate:
         
         methodNames = methodNames + "\n"
         classEnd = "\n}; // end " + implClassName + "\n\n"
-        factoryMethod = "\n\n" + className.title() + "*\n" + className.title() + "Factory::createNew" + className.title() + "(const char* " + className + "Id)\n{\n     return new " + implClassName + "(" + className + "Id);\n}"
+        factoryMethod = "\n\n" + className  + "*\n" + className + "Factory::createNew" + className + "(const char* " + className + "Id)\n{\n     return new " + implClassName + "(" + className + "Id);\n}"
         commitImpl = "\nStatus\n" + implClassName + "::commitChanges()\n{\n     // Insert code here to commit\n     // changes to a new  record\n     //\n\n     return kSuccess;\n}"
         
         constImpl = implClassName + "::" + implClassName + "(const char* " + className + "Id) : " + "\n          " + pvtVarInits[:-1] + "\n{\n     //Set up defaults here\n}\n"
         
-        srcFO = open( className + "Update.cc" , "w")
+        srcFO = open( className + ".cc" , "w")
         srcFO.write(headers)
         srcFO.write(namespaceSet)
         srcFO.write(comment)
