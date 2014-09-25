@@ -3,7 +3,7 @@ parasol
 
 A database interface generator written in Python
 
-This tool generates C++ interface and implementations for DB operations.
+This tool generates a C++ CRUD interface and a stub implementation for DB operations.
 
 
 First, you need to create a schema in XML.
