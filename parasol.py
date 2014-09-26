@@ -3,6 +3,7 @@ import sys
 import GenIterator
 import GenCreate
 import GenUpdate
+import GenReader
 import xml.etree.ElementTree as ET
 
 def getSchemaDict (schemafile) :
@@ -45,6 +46,9 @@ def main() :
         createG.genSource(schemaDict)
     if args.read :
         print "read requested"
+        readG = GenReader.GenReader()
+        readG.genHeader(schemaDict)
+        readG.genSource(schemaDict)
     if args.update :
         print "update requested"
         updateG = GenUpdate.GenUpdate()
